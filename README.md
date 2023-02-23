@@ -177,8 +177,8 @@ Es una herramienta que nos permite generar documentación de nuestra aplicación
 ## Cómo arrancar el proyecto
 
   ```sh
-    git clone https://github.com/maikelalonsobana/world2meet.git
-    cd world2meet
+    git clone https://github.com/maikelalonsobana/heroes.git
+    cd heroes
     npm install
     npm run start:dev
   ```
@@ -194,5 +194,5 @@ Es una herramienta que nos permite generar documentación de nuestra aplicación
     npm run build
     # Cambiamos en conf/nginx.conf la línea 78 por la url del servidor de producción
     # proxy_pass http://localhost:8080/ se cambiaría por la url de producción
-    docker build -t world2meet .
+    docker build -t heroes .
   ```

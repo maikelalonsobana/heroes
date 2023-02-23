@@ -1,6 +1,6 @@
 {
-  "name": "w2m",
-  "version": "0.0.0",
+  "name": "W2M",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

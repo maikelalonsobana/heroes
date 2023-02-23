@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>w2m documentation</title>
+        <title>W2M documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">w2m documentation</a>
+            <a href="./" class="navbar-brand">W2M documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -195,15 +195,15 @@ typescript                      4.7.4</code></pre></div><h3 id="utilidades-de-de
 <p><a href="https://compodoc.app/">https://compodoc.app/</a>
 Es una herramienta que nos permite generar documentación de nuestra aplicación de angular, con la ventaja de que podemos generarla en formato markdown, html, json, etc.</p>
 <h2 id="cómo-arrancar-el-proyecto">Cómo arrancar el proyecto</h2>
-<div><pre class="line-numbers"><code class="language-sh">  git clone https://github.com/maikelalonsobana/world2meet.git
-  cd world2meet
+<div><pre class="line-numbers"><code class="language-sh">  git clone https://github.com/maikelalonsobana/heroes.git
+  cd heroes
   npm install
   npm run start:dev</code></pre></div><h2 id="cómo-generar-y-mostrar-la-documentación-con-compodoc">Cómo generar y mostrar la documentación con compodoc</h2>
 <div><pre class="line-numbers"><code class="language-sh">  npm run opendoc</code></pre></div><h2 id="cómo-generar-el-docker">Cómo generar el docker</h2>
 <div><pre class="line-numbers"><code class="language-sh">  npm run build
   # Cambiamos en conf/nginx.conf la línea 78 por la url del servidor de producción
   # proxy_pass http://localhost:8080/ se cambiaría por la url de producción
-  docker build -t world2meet .</code></pre></div>
+  docker build -t heroes .</code></pre></div>
 
 
 
