@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+}
+
+mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.add-button {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.table-filter {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.custom-filter {
+  max-width: 200px;
+  align-self: baseline;
+}

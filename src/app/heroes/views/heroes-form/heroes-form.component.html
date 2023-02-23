@@ -1,0 +1,56 @@
+<mat-card class="mat-card-page-container">
+  <mat-card-title>
+    {{ id ? 'Editar héroe' : 'Añadir héroe' }}
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput formControlName="name" placeholder="SuperLópez" required appCustomUppercase>
+      </mat-form-field>
+        <ng-container *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+          <mat-hint *ngIf="form.controls['name'].errors?.['required']">
+            Es obligatorio introdicir un nombre.
+          </mat-hint>
+        </ng-container>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Edad</mat-label>
+        <input type="number" matInput formControlName="age" required>
+      </mat-form-field>
+      <ng-container *ngIf="form.controls['age'].invalid && (form.controls['age'].dirty || form.controls['age'].touched)">
+        <mat-hint *ngIf="form.controls['age'].errors?.['minlength']">
+          La edad mínima es de 0 años
+        </mat-hint>
+      </ng-container>
+      <mat-form-field class="example-full-width">
+        <mat-label>Nacionalidad</mat-label>
+        <input type="text" matInput formControlName="nacionality" required>
+      </mat-form-field>
+      <ng-container *ngIf="form.controls['nacionality'].invalid && (form.controls['nacionality'].dirty || form.controls['nacionality'].touched)">
+        <mat-hint *ngIf="form.controls['nacionality'].errors?.['required']">
+          Es obligatorio introdicir una nacionalidad.
+        </mat-hint>
+      </ng-container>
+      <mat-form-field class="example-full-width">
+        <mat-label>Poder</mat-label>
+        <input type="text" matInput formControlName="power" required>
+      </mat-form-field>
+      <ng-container *ngIf="form.controls['power'].invalid && (form.controls['power'].dirty || form.controls['power'].touched)">
+        <mat-hint *ngIf="form.controls['power'].errors?.['required']">
+          Es obligatorio introdicir un poder.
+        </mat-hint>
+      </ng-container>
+      <mat-card-actions>
+
+        <button mat-raised-button color="accent" (click)="back()" class="save-button">
+          Volver
+        </button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="id ? updateHero(id) : addHero()"
+          class="save-button">
+          Guardar
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,67 @@
+<mat-card class="mat-card-page-container">
+  <mat-card-title>
+    Listado de héroes
+  </mat-card-title>
+  <mat-card-content>
+    <div class="table-filter">
+    <button testId="addHeroButton" mat-raised-button color="primary" class="add-button" (click)="addHero()">Añadir héroe</button>
+    <mat-form-field class="custom-filter">
+      <mat-label>Filtrar</mat-label>
+      <input matInput testId="filter"(keyup)="applyFilter($event)" placeholder="Teclea algo para filtrar" #input>
+    </mat-form-field>
+  </div>
+    <table mat-table testId="heroesList" [dataSource]="dataSource" matSort (matSortChange)="toggleSort()"
+      class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Id"> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button testId="editButton" mat-icon-button matTooltip="Primary" color="primary" aria-label="edit" (click)="editItem(element.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button testId="deleteButton" mat-icon-button matTooltip="warn" color="warn" aria-label="delete" (click)="deleteItem(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por nombre"> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por edad"> Edad </th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nacionality">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por nacionalidad">
+          Nacionalidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.nacionality}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="power">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por poder"> Poder </th>
+        <td mat-cell *matCellDef="let element"> {{element.power}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- Row shown when there is no matching data. -->
+      <tr testId="no-data" class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No se encontraron coincidencias"</td>
+  </tr>
+    </table>
+    <!-- <ng-container>
+      <p testId="no-data" class="no-data">No se encuentran coincidencias</p>
+    </ng-container> -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" [length]="totalItems" [pageSize]="limit"
+      showFirstLastButtons (page)="pageChange($event)" itemsPerPageLabel="Héroes por página">
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

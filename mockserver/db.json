@@ -1,0 +1,69 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@gmail.com",
+      "password": "John+1234"
+    }
+  ],
+  "heroes": [
+    {
+      "id": 2,
+      "name": "Superman",
+      "age": 35,
+      "nacionality": "Cryptonian",
+      "power": "Super strength"
+    },
+    {
+      "id": 3,
+      "name": "Spiderman",
+      "age": 25,
+      "nacionality": "American",
+      "power": "Spider sense"
+    },
+    {
+      "id": 5,
+      "name": "Green Lantern",
+      "age": 30,
+      "nacionality": "American",
+      "power": "Green energy"
+    },
+    {
+      "name": "Capitán América",
+      "age": 22,
+      "nacionality": "American",
+      "power": "Lucha y fuerza",
+      "id": 7
+    },
+    {
+      "name": "Lobezno",
+      "age": "32",
+      "nacionality": "Australiano",
+      "power": "Desgarrador",
+      "id": 9
+    },
+    {
+      "name": "Hulk",
+      "age": "46",
+      "nacionality": "Inglesa",
+      "power": "Destructor",
+      "id": 10
+    },
+    {
+      "id": 11,
+      "name": "Thor",
+      "age": 29,
+      "nacionality": "Asgardian",
+      "power": "Big hammer"
+    },
+    {
+      "name": "MAGNETO",
+      "age": 67,
+      "nacionality": "Desconocida",
+      "power": "Atracción",
+      "createdAt": 1677145867001,
+      "id": 12
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>w2m documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">w2m documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h2 id="finalidad">Finalidad</h2>
+<p>Prueba técnica frontend de aplicación SPA que permite hacer un mantenimiento de superhéroes. Se utiliza Angular Material para el diseño de la aplicación, rutas protegidas con guardas, interceptor para mostrar un loader mientras se realizan peticiones a un servidor de mocks (json-server), directiva para personalizar el comportamiento de un input, etc... El proyecto está estructurado de manera ordenada. Se simula la obligación de iniciar sesión para que estén protegidas las rutas privadas. Se ha utilizado compodoc para la generación de la documentación de la aplicación.</p>
+<p>El proyecto cuenta con vistas para mostrar un listado de héroes o eliminar alguno de ellos, un formulario para añadir/editar héroes, un servicio que gestiona las peticiones al servidor de mocks y una guarda que controla que el usuario esté logueado.</p>
+<h2 id="estructura-del-proyecto">Estructura del proyecto</h2>
+<p>La estrucura del proyecto es una muestra de cómo se puede estructurar un proyecto de angular de manera organizada.. El contenido de las carpetas sería el siguiente:</p>
+<ul>
+<li>src: Contiene el código fuente de la aplicación<ul>
+<li>core: Módulo central de la aplicación<ul>
+<li>guards          </li>
+<li>interceptors</li>
+</ul>
+</li>
+<li>heroes: Contiene los servicios, interfaces y vistas del módulo privado que gestiona las acciones sobre el formulario y listado de héroes</li>
+<li>services: Contiene los servicios heroes, login y main-store</li>
+<li>shared: Contiene el módulo con información compartida en toda la aplicación<ul>
+<li>components         </li>
+<li>directives</li>
+</ul>
+</li>
+<li>types: Contiene las interfaces que se utilizan en la aplicación</li>
+<li>views: Contiene la vistas principales de la aplicación</li>
+</ul>
+</li>
+<li>documentation<ul>
+<li>Contiene los recursos usados en los archivos de documentación resultado de la ejecución de compodoc.</li>
+</ul>
+</li>
+<li>json-server:<ul>
+<li>Contiene el servidor de mocks, formado por un archivo db.json que hace de base de datos, en el archivo routes podemos añadir pequeñas expresiones regulares para poder conseguir diferentes rutas, para cosas más complejas tenemos el index.js que es un servidor de node con <code>express</code>.</li>
+</ul>
+</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-bash">
+.
+├── angular.json
+├── build-docker.sh
+├── conf
+│   └── nginx.conf
+├── Dockerfile
+├── karma.conf.js
+├── mockserver
+│   ├── db.json
+│   ├── index.js
+│   └── routes.json
+├── package.json
+├── package-lock.json
+├── README.md
+├── src
+│   ├── app
+│   │   ├── app.component.html
+│   │   ├── app.component.scss
+│   │   ├── app.component.spec.ts
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   ├── app-routing.module.ts
+│   │   ├── core
+│   │   │   ├── customPaginator.ts
+│   │   │   ├── guards
+│   │   │   │   ├── auth.guard.spec.ts
+│   │   │   │   └── auth.guard.ts
+│   │   │   └── interceptors
+│   │   │       ├── loader.interceptor.spec.ts
+│   │   │       └── loader.interceptor.ts
+│   │   ├── heroes
+│   │   │   ├── heroes.module.ts
+│   │   │   ├── heroes-routing.module.ts
+│   │   │   ├── services
+│   │   │   │   ├── heroes.service.spec.ts
+│   │   │   │   └── heroes.service.ts
+│   │   │   ├── types
+│   │   │   │   ├── heroe.ts
+│   │   │   │   ├── paginated-heroes.ts
+│   │   │   │   └── query.ts
+│   │   │   └── views
+│   │   │       ├── heroes-form
+│   │   │       │   ├── heroes-form.component.html
+│   │   │       │   ├── heroes-form.component.scss
+│   │   │       │   ├── heroes-form.component.spec.ts
+│   │   │       │   └── heroes-form.component.ts
+│   │   │       ├── heroes-list
+│   │   │       │   ├── heroes-list.component.html
+│   │   │       │   ├── heroes-list.component.scss
+│   │   │       │   ├── heroes-list.component.spec.ts
+│   │   │       │   └── heroes-list.component.ts
+│   │   │       └── home
+│   │   │           ├── home.component.html
+│   │   │           ├── home.component.scss
+│   │   │           ├── home.component.spec.ts
+│   │   │           └── home.component.ts
+│   │   ├── services
+│   │   │   ├── login.service.spec.ts
+│   │   │   ├── login.service.ts
+│   │   │   ├── main-store.service.spec.ts
+│   │   │   └── main-store.service.ts
+│   │   ├── shared
+│   │   │   ├── components
+│   │   │   │   └── dialog-content
+│   │   │   │       ├── dialog-content.component.html
+│   │   │   │       ├── dialog-content.component.scss
+│   │   │   │       ├── dialog-content.component.spec.ts
+│   │   │   │       └── dialog-content.component.ts
+│   │   │   ├── directives
+│   │   │   │   ├── custom-uppercase.directive.spec.ts
+│   │   │   │   └── custom-uppercase.directive.ts
+│   │   │   └── shared.module.ts
+│   │   ├── types
+│   │   │   ├── error.ts
+│   │   │   ├── login-rq.ts
+│   │   │   └── user.ts
+│   │   └── views
+│   │       ├── login
+│   │       │   ├── login.component.html
+│   │       │   ├── login.component.scss
+│   │       │   ├── login.component.spec.ts
+│   │       │   └── login.component.ts
+│   │       └── not-found
+│   │           ├── not-found.component.html
+│   │           ├── not-found.component.scss
+│   │           ├── not-found.component.spec.ts
+│   │           └── not-found.component.ts
+│   ├── assets
+│   ├── environments
+│   │   ├── environment.prod.ts
+│   │   └── environment.ts
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main.ts
+│   ├── polyfills.ts
+│   ├── styles.scss
+│   └── test.ts
+├── tsconfig.app.json
+├── tsconfig.doc.json
+├── tsconfig.json
+└── tsconfig.spec.json
+</code></pre></div><h2 id="stack-tecnológico">Stack tecnológico</h2>
+<h3 id="angular">Angular</h3>
+<div><pre class="line-numbers"><code class="language-sh">Angular CLI: 14.2.10
+Node: 16.17.0
+Package Manager: npm 8.15.0 
+OS: linux x64
+
+Angular: 14.2.12
+... animations, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router
+
+Package                         Version
+
+&#64;angular-devkit/architect       0.1402.10
+&#64;angular-devkit/build-angular   14.2.10
+&#64;angular-devkit/core            14.2.10
+&#64;angular-devkit/schematics      14.2.10
+&#64;angular/cdk                    13.0.0
+&#64;angular/cli                    14.2.10
+&#64;angular/material               13.0.0
+&#64;schematics/angular             14.2.10
+rxjs                            7.5.7
+typescript                      4.7.4</code></pre></div><h3 id="utilidades-de-desarrollo">Utilidades de desarrollo</h3>
+<h4 id="json-server">JSON Server</h4>
+<p><a href="https://github.com/typicode/json-server">https://github.com/typicode/json-server</a></p>
+<p>Es una utilidad que permite levantar un complejo servidor de desarrollo para &quot;mockear&quot; nuestras respuestas, con la ventaja de ser sencillo de implementar</p>
+<h4 id="compodoc">Compodoc</h4>
+<p><a href="https://compodoc.app/">https://compodoc.app/</a>
+Es una herramienta que nos permite generar documentación de nuestra aplicación de angular, con la ventaja de que podemos generarla en formato markdown, html, json, etc.</p>
+<h2 id="cómo-arrancar-el-proyecto">Cómo arrancar el proyecto</h2>
+<div><pre class="line-numbers"><code class="language-sh">  git clone https://github.com/maikelalonsobana/world2meet.git
+  cd world2meet
+  npm install
+  npm run start:dev</code></pre></div><h2 id="cómo-generar-y-mostrar-la-documentación-con-compodoc">Cómo generar y mostrar la documentación con compodoc</h2>
+<div><pre class="line-numbers"><code class="language-sh">  npm run opendoc</code></pre></div><h2 id="cómo-generar-el-docker">Cómo generar el docker</h2>
+<div><pre class="line-numbers"><code class="language-sh">  npm run build
+  # Cambiamos en conf/nginx.conf la línea 78 por la url del servidor de producción
+  # proxy_pass http://localhost:8080/ se cambiaría por la url de producción
+  docker build -t world2meet .</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
